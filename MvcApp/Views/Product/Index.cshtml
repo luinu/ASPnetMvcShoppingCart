@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MvcApp.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Products</h2>
+    <br />
+@Html.ActionLink("Add new product","Create")
+<br />
+    @using (Html.BeginForm())
+    {
+    <p> Search for product: @Html.TextBox("searchString", null, new { @class="search"}) 
+    Filter by category: @Html.DropDownList("prodCategory", "All") <input type="submit" value="Filter" /></p>
+    }
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td width="100">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>
+            <td>
+                @Html.ActionLink("Add to cart", "Cart", "ShoppingCart", new { id = item.Id }, null)
+                @Html.ActionLink("Details", "Details", "Product", new { id = item.Id }, null)
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, null)
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, null)
+            </td>
+        </tr>
+    
+}
+
+</table>

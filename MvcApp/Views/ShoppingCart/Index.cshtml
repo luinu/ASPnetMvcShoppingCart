@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using MvcApp.Controllers
+<h2>Cart</h2>
+
+<body>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+        </tr>
+        @{
+            decimal s = 0;
+        }
+        @foreach (Item item in (List<Item>)Session["cart"])
+        {
+
+            <tr>
+                <td>@item.Pr.Id</td>
+                <td>@item.Pr.Name</td>
+                <td>@item.Pr.Price</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Pr.Price * item.Quantity)</td>
+                <td>@Html.ActionLink("Delete", "Delete", "ShoppingCart", new { id = item.Pr.Id }, null)</td>
+            </tr>
+            s += (item.Pr.Price * item.Quantity);
+
+        }
+        <tr>
+            <td align="right" colspan="5">Sum:</td>
+            <td>@s</td>
+        </tr>
+    </table>
+
+    <br />
+    @Html.ActionLink("Continue Shopping", "Index", "Product")
+</body>
