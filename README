@@ -1,0 +1,10 @@
+Simple naive implementation of shopping cart
+
+
+
+TODO:
+
+1. move all edit, delete, update actions to administrator account
+2. Add database table with users, and table with orders
+3. change routing
+3. fix empty bag problem
