@@ -22,7 +22,6 @@ namespace MvcApp.Controllers
             }
             return -1;
         }
-        [HttpGet]
         public ActionResult Cart(int id)
         {
             if (Session["cart"] == null)
