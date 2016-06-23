@@ -18,6 +18,9 @@ namespace MvcApp.Controllers
         // GET: Product
         public ActionResult Index(string prodCategory, string searchString)
         {
+            List<Item> cart = (List<Item>)Session["cart"];
+            Session["cart"] = cart;
+
             var CategoryList = new List<string>();
 
             var CategoryQuery = db.Products.Select(p => p.Category.Name);

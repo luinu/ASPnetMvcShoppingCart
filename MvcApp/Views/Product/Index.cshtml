@@ -10,7 +10,7 @@
 <br />
     @using (Html.BeginForm())
     {
-    <p> Search for product: @Html.TextBox("searchString", null, new { @class="search"}) 
+    <p> Search for product: @Html.TextBox("searchString", null) 
     Filter by category: @Html.DropDownList("prodCategory", "All") <input type="submit" value="Filter" /></p>
     }
 
