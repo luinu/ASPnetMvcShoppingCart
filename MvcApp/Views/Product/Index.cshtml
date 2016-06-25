@@ -5,8 +5,6 @@
 }
 
 <h2>List of Products</h2>
-    <br />
-@Html.ActionLink("Add new product","Create")
 <br />
     @using (Html.BeginForm())
     {
@@ -62,8 +60,6 @@
             <td>
                 @Html.ActionLink("Add to cart", "Cart", "ShoppingCart", new { id = item.Id }, null)
                 @Html.ActionLink("Details", "Details", "Product", new { id = item.Id }, null)
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, null)
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, null)
             </td>
         </tr>
     
